@@ -46,4 +46,10 @@ class datosBase
     {
         return mysqli_fetch_array($this->bloqueRegistros);
     }
+
+    function getTupla($query)
+    {
+        $this->consulta($query);
+        return mysqli_fetch_object($this->bloqueRegistros);
+    }
 }
