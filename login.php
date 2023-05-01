@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,11 @@
     <link href="css/bootstrap.css" media="screen" rel="stylesheet">
     <title>Login | </title>
 </head>
+
 <body>
-<?php
+    <?php
     include 'menu/menu_index.php';
     ?>
 </body>
+
 </html>
