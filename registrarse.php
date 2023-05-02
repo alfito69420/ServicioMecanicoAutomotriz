@@ -37,6 +37,7 @@ $_SESSION['captcha'] = $resu;
     <title>Registrarse | </title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -78,6 +79,10 @@ $_SESSION['captcha'] = $resu;
         </div>
     </div>
     <!--/FORM-->
+
+    <?php
+        include 'footer.php';
+    ?>
 </body>
 
 </html>

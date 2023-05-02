@@ -12,6 +12,7 @@
 <body>
     <?php
     include 'menu/menu_index.php';
+    include 'footer.php';
     ?>
 </body>
 </html>
