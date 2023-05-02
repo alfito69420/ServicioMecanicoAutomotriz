@@ -37,7 +37,8 @@ $_SESSION['captcha'] = $resu;
     <title>Registrarse | </title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/footer.css" media="screen">
 </head>
 
 <body>
