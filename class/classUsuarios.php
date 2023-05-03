@@ -2,11 +2,11 @@
 //include "../class/classBD.php";
 include "classBD.php";
 
-class Mecanicos extends datosBase 
+class Usuarios extends datosBase 
 {
     function lista()
     {
-        $this->consulta("SELECT id_usuario, nombre, primer_ap, segundo_ap FROM usuario_cat WHERE rol_fk =7");
+        $this->consulta("SELECT id_usuario, nombre, primer_ap, segundo_ap FROM usuario_cat WHERE rol_fk =1");
         $html = '<table class="table table-hover table-striped table-dark">';
 
         $html .= '<tr><td colspan="2"><img src="../img/edit.webp" width="24px" /></td>';
@@ -29,5 +29,5 @@ class Mecanicos extends datosBase
         return $html;
     }
 }
-$objeMecanicos = new Mecanicos();
+$objeUsuarios = new Usuarios();
 ?>

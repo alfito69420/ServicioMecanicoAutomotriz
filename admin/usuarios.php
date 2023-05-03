@@ -8,7 +8,7 @@
     <link href="../css/bootstrap.css" media="screen" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/footer.css" media="screen">
-    <title>ServiCars | Mecánicos</title>
+    <title>ServiCars | Usuarios</title>
 </head>
 
 <body>
@@ -17,12 +17,12 @@
     include "../menu/menu_admin.php";
     ?>
     <div class="text-center pt-4">
-        <h3 >Mecánicos</h3>
+        <h3 >Usuarios</h3>
     </div>
     <div class="container">
     <?php
-        include "../class/classMecanicos.php";
-        echo $objeMecanicos->lista();
+        include "../class/classUsuarios.php";
+        echo $objeUsuarios->lista();
     ?>
     </div>
     <?php
