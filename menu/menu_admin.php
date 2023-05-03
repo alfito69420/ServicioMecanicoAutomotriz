@@ -18,12 +18,14 @@
                         Usuarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Mecánicos</a>
+                    <a class="dropdown-item" href="../admin/mecanicos.php">Mecánicos</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Clientes</a>
                     </div>
                 </li>
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mi Perfil</a>
+                </li>
             </ul>
         </div>
     </div>
