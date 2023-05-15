@@ -50,7 +50,7 @@ $_SESSION['captcha'] = $resu;
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form class="mb-3 mt-3 w-50 mx-auto" action="registrarse_bd.php" method="post">
+                <form class="mb-3 mt-3 w-50 mx-auto bg-dark p-3" action="registrarse_bd.php" method="post">
                     <label for="nameInput" class="form-label">Nombre</label>
                     <input name="nombre" type="text" class="form-control" id="nameRegister" placeholder="Ingrese su nombre">
 
@@ -74,7 +74,7 @@ $_SESSION['captcha'] = $resu;
                     <label for="captchaInput" class="form-label">Captcha</label>
                     <input name="captcha" type="text" class="form-control" placeholder="<?= $captcha; ?>" required>
 
-                    <input type="submit" class="btn btn-dark mx-auto mt-3 w-25" value="Registrar">
+                    <input type="submit" class="btn btn-primary mx-auto mt-3 w-25" value="Registrar">
                 </form>
             </div>
         </div>
