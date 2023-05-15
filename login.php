@@ -34,7 +34,7 @@
                 <label for="passInput" class="form-label mt-3">Contraseña</label>
                 <input name="password" type="password" class="form-control" placeholder="Ingrese su contraseña">
 
-                <input type="button" class="btn btn-primary mx-auto mt-3" value="Iniciar sesión">
+                <input type="submit" class="btn btn-primary mx-auto mt-3" value="Iniciar sesión">
             </form>
             <!-- <div class="d-flex justify-content-center align-items-center">
                 <button type="button" class="btn btn-dark mx-auto mt-3 w-25">Iniciar sesión</button>
