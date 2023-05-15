@@ -19,7 +19,7 @@
 
                 <h1 class="text-center mt-5">Crear Cita</h1>
 
-                <form class="mb-3 mt-3 w-50 mx-auto bg-dark p-3" action="registrarse_bd.php" method="post">
+                <form class="mb-3 mt-3 w-50 mx-auto bg-dark p-3" action="../class/classGenerarCita.php" method="post">
                     <label for="marcaInput" class="form-label">Marca</label>
 
                     <input name="marca" type="text" class="form-control" id="nameRegister" placeholder="Ingrese la marca del vehículo">
@@ -34,7 +34,7 @@
                     <input name="anio" type="number" class="form-control" id="anio" placeholder="Ingrese el año del automovil">
 
                     <label for="fechaInput" class="form-label mt-3">Fecha Cita</label>
-                    <input name="fecha" type="date" class="form-control" id="fecha" placeholder="Ingrese la fecha para agendar la cita">
+                    <input name="fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha para agendar la cita">
                 
                     <label for="causaInput" class="form-label mt-3">Causa de averío</label>
                     <input name="causa" type="text" class="form-control" id="causa" placeholder="Ingrese la causa de averío del automóvil">
@@ -55,6 +55,16 @@
         <a class="btn btn-primary mb-5" href="mis_citas.php" role="button">Volver</a>
     </div>
     <!--/FORM-->
+
+
+    <?php
+    //include '../class/classGenerarCita.php';
+
+    // echo $cita;
+    // echo $modelo;
+    // echo $vehiculo;
+    // echo $marca;
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
