@@ -37,7 +37,7 @@
                                 <p class="font-weight-bold">Nombre:</p>
                                 <h6 class="text-muted">
                                     <?php
-                                    echo $_SESSION['nombre'];
+                                    //echo $_SESSION['nombre'];
                                     ?>
                                 </h6>
                             </div>
@@ -60,7 +60,7 @@
 
                         </div>
                     </div>
-                    <a class="btn btn-danger col-md-12 mt-3" href="../index.php" role="button">Cerrar Sesión</a>
+                    <a class="btn btn-danger col-md-12 mt-3 mb-5" href="../index.php" role="button">Cerrar Sesión</a>
                 </div>
 
             </div>
@@ -70,6 +70,8 @@
     <?php
     include '../footer.php';
     ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
