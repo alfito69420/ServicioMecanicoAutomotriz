@@ -33,10 +33,12 @@ if (isset($_GET['email']) && isset($_GET['password'])) {
             $_SESSION['correo'] = $registro->correo;
             $_SESSION['id'] = $registro->id_usuario;
 
-            if ($registro->rol == 2) {
-                header("location: admin/home_admin.php");
-            } else {
+            if ($registro->rol_fk == 2) {
+                header("location: admin/admin_perfil.php");
+            } else if($registro->rol_fk == 1) {
                 //$objeBD->consulta("update usuario set fechaUltAcceso='".date("Y-m-d H:i:s")."', numeAccesos=numeAccesos+1 where id=".$registro->id);
+                header("location: regular_user/home_users.php");
+            } else if($registro->rol_fk == 7) {
                 header("location: regular_user/home_users.php");
             }
         } else {
