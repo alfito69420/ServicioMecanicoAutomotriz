@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +46,11 @@
                             </div>
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Correo:</p>
-                                <h6 class="text-muted">el email de este cabron</h6>
+                                <h6 class="text-muted">
+                                    <?php
+                                    echo $_SESSION['correo'];
+                                    ?>
+                                </h6>
                             </div>
                             <h4 class="mt-3">AAAAAAAAAAAAA</h4>
                             <!-- <hr class="badge-secondary w-50"> -->
