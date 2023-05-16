@@ -24,7 +24,16 @@
     <div class="container">
     <?php
         include "../class/classMecanicos.php";
-        echo $objeMecanicos->lista();
+        //echo $objeMecanicos->lista();
+
+        if (isset($_POST['accion']) && isset($_POST['id'])) {
+            echo $objeMecanicos->ejecuta($_POST['accion'], $_POST['id']);
+        } else {
+            if (isset($_POST['accion'])) {
+                echo $objeMecanicos->ejecuta($_POST['accion']);
+            } else
+                echo $objeMecanicos->lista();
+        }
     ?>
     </div>
     <?php

@@ -22,7 +22,17 @@
     <div class="container">
         <?php
         include "../class/classUsuarios.php";
-        echo $objeUsuarios->lista();
+        //echo $objeUsuarios->lista();
+        
+        if (isset($_POST['accion']) && isset($_POST['id'])) {
+            echo $objeUsuarios->ejecuta($_POST['accion'], $_POST['id']);
+        } else {
+            if (isset($_POST['accion'])) {
+                echo $objeUsuarios->ejecuta($_POST['accion']);
+            } else
+                echo $objeUsuarios->lista();
+        }
+        
         ?>
     </div>
     <?php
