@@ -6,8 +6,8 @@ class Mecanicos extends datosBase
 {
     function lista()
     {
-        $this->consulta("SELECT id_usuario, nombre, primer_ap, segundo_ap FROM usuario_cat WHERE rol_fk =7");
-        $html = '<table class="table table-hover table-striped table-dark">';
+        $this->consulta("SELECT id_usuario, nombre, primer_ap, segundo_ap FROM usuario_cat WHERE rol_fk = 7");
+        $html = '<table class="table table-hover table-striped table-secondary">';
 
         //$html .= '<tr><td colspan="2"><img src="../img/edit.webp" width="24px" /></td>';
 
@@ -16,7 +16,7 @@ class Mecanicos extends datosBase
                                 <form method="post" action="mecanicos.php">
                                 <input type="image" src ="../img/edit.webp" width="24px" />
                                 <input type="hidden" name="accion" value="formNew"/>
-                                </form> 
+                                </form>
                             </td>';
 
         for ($col = 0; $col < $this->numeColumnas; $col++) { //cabeceras
@@ -58,16 +58,17 @@ class Mecanicos extends datosBase
     function ejecuta($p_accion, $p_id = 0)
     {
         $html = "";
+
+        $p_accion =  str_replace('/', '', $p_accion);
+
         switch ($p_accion) {
             case 'formEdit':
                 $registro = $this->getTupla("SELECT * FROM usuario_cat WHERE id_usuario=" . $p_id);
             case 'formNew':
-
-
                 $html .= '<div class="d-flex justify-content-center">
                             <form method="post" class="col-4">';
                 if ($p_accion == 'formNew')
-                    $html .= "<h3  class='text-center mb-5'>Nuevo Mecanico</h3>";
+                    $html .= "<h3  class='text-center mb-5'>Nuevo Mecánico</h3>";
                 else {
                     $html .= '<h3 class="text-center mb-5">Actualizar Mecanico</h3>
                             <input type="hidden" name="Id" value="' . (isset($registro) ? $registro->id_usuario : '') . '"';
@@ -77,44 +78,30 @@ class Mecanicos extends datosBase
                                 <div class="row">
                                     <label class="col-4">Nombre</label>
                                         <div class="col-8">
-                                            <input class="" type="text" name="nombre" value=' .
-                    (isset($registro) ? $registro->nombre : '') . '>
+                                            <input class="" type="text" name="nombre" value=' . (isset($registro) ? $registro->nombre : '') . '>
                                         </div>
                                     <label class="col-4">Primer Apellido</label>
-                                    <div class="col-8">
-                                            <input class="" type="text" name="primerAp" value=' .
-                    (isset($registro) ? $registro->primer_ap : '') . '>
+                                        <div class="col-8">
+                                            <input class="" type="text" name="primerAp" value=' . (isset($registro) ? $registro->primer_ap : '') . '>
                                         </div>
                                     <label class="col-4">Segundo Apellido</label>
-                                    <div class="col-8">
-                                            <input class="" type="text" name="segundoAp" value=' .
-                    (isset($registro) ? $registro->segundo_ap : '') . '>
+                                        <div class="col-8">
+                                            <input class="" type="text" name="segundoAp" value=' . (isset($registro) ? $registro->segundo_ap : '') . '>
                                         </div>
                                         <label class="col-4">Correo</label>
-                                    <div class="col-8">
-                                            <input class="" type="text" name="correo" value=' .
-                    (isset($registro) ? $registro->correo : '') . '>
+                                        <div class="col-8">
+                                            <input class="" type="email" name="correo" value=' . (isset($registro) ? $registro->correo : '') . '>
                                         </div>
                                         <label class="col-4">Password</label>
-                                    <div class="col-8">
-                                            <input class="" type="text" name="contrasena" value=' .
-                    (isset($registro) ? $registro->contrasena : '') . '>
-                                        </div>
-                                        <label class="col-4">Rol</label>
-                                    <div class="col-8">
-                                            <input class="" type="text" name="rol" value=' .
-                    (isset($registro) ? $registro->rol_fk : '') . '>
+                                        <div class="col-8">
+                                            <input class="" type="password" name="contrasena" value=' . (isset($registro) ? $registro->contrasena : '') . '>
                                         </div>
                                     </div>
                                     <div class="row mt-d mt-5">
-                                        <button type="submit" class="btn btn-success btn-sm">'
-                    .
-                    (isset($registro) ? 'Actualizar' : 'Registrar') . '
+                                        <button type="submit" class="btn btn-success btn-sm">' . (isset($registro) ? 'Actualizar' : 'Registrar') . '
                                         </button>
-                                        <input type="hidden" name="accion" value='
-                    .
-                    (isset($registro) ? 'update' : 'insert') . '
-                                        />
+                                        <input type="hidden" name="accion" value=' . (isset($registro) ? 'update' : 'insert') . '/>
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -126,20 +113,39 @@ class Mecanicos extends datosBase
                 return $this->lista();
                 break;
             case 'insert';
-                //$query = "insert into usuario_cat(nombre, primer_ap, segundo_ap,contrasena,correo,rol_fk) 
-                //values ('" . $_POST['nombre'] . "','" . $_POST['primerAp'] . "','" . $_POST['segundoAp'] . "','" . $_POST['correo'] . "',MD5('" . $_POST['contrasena'] . "'),'" . $_POST['rol_fk'] . "')";
-                
-                $query = "insert into usuario_cat set nombre='" . $_POST['nombre'] . "', primer_ap='" . $_POST['primerAp'] . "', segundo_ap='" . $_POST['segundoAp'] . "', correo='" . $_POST['correo'] . "', contrasena=MD5('" . $_POST['contrasena'] . "', rol_fk='".$_POST['rol']."')";
-                $this->consulta($query);
+                $query = "INSERT into usuario_cat(nombre, primer_ap, segundo_ap,correo,contraseña,rol_fk)
+                values ('" . $_POST['nombre'] . "'
+                ,'" . $_POST['primerAp'] . "'
+                ,'" . $_POST['segundoAp'] . "'
+                ,'" . $_POST['correo'] . "'
+                ,MD5('" . $_POST['contrasena'] . "')
+                ,7)";
+
+                //echo $query;
+
+                $query2 = "INSERT INTO usuario_cat SET nombre='" . $_POST['nombre'] . "'
+                , primer_ap='" . $_POST['primerAp'] . "', segundo_ap='" . $_POST['segundoAp'] . "'
+                , correo='" . $_POST['correo'] . "', contrasena=MD5('" . $_POST['contrasena'] . "'),rol_fk=7";
+
+                //echo "\n".$query2;
+
+                $this->consulta($query2);
                 return $this->lista();
                 break;
             case 'update':
                 $query = 'update usuario_cat set nombre="' . $_POST['nombre'] . '" where id_usuario=' . $_POST['Id'];
-                $this->consulta($query);
+
+                $query2 = "UPDATE usuario_cat SET nombre='" . $_POST['nombre'] . "'
+                , primer_ap='" . $_POST['primerAp'] . "', segundo_ap='" . $_POST['segundoAp'] . "'
+                , correo='" . $_POST['correo'] . "', contrasena=MD5('" . $_POST['contrasena'] . "') where id_usuario=" . $_POST['Id'];
+
+                $this->consulta($query2);
                 return $this->lista();
                 break;
             default:
                 $html = $p_accion . "No esta programada en classUsuarios";
+
+                echo $p_accion;
         }
         return $html;
     } //close function

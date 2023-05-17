@@ -14,15 +14,15 @@
 </head>
 
 <body>
-    
+
     <?php
     include "../menu/menu_admin.php";
     ?>
     <div class="text-center pt-4">
-        <h3 >Mecánicos</h3>
+        <h3>Mecánicos</h3>
     </div>
     <div class="container">
-    <?php
+        <?php
         include "../class/classMecanicos.php";
         //echo $objeMecanicos->lista();
 
@@ -34,7 +34,10 @@
             } else
                 echo $objeMecanicos->lista();
         }
-    ?>
+
+
+        //echo $query;
+        ?>
     </div>
     <?php
     include '../footer.php';
