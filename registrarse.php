@@ -57,13 +57,13 @@ $_SESSION['captcha'] = $resu;
                     <label for="primerApInput" class="form-label mt-3">Apellido Paterno</label>
                     <input name="primerAp" type="text" class="form-control" id="apRegister" placeholder="Ingrese su apellido">
 
-                    <label for="segundoApInput" class="form-label mt-3">Apellido Materno</label>
+                    <label for="segundoApInput" class="form-label mt-3 mt-3">Apellido Materno</label>
                     <input name="segundoAp" type="text" class="form-control" id="apRegister" placeholder="Ingrese su apellido">
 
-                    <label for="emailInput" class="form-label">Correo electrónico</label>
+                    <label for="emailInput" class="form-label mt-3">Correo electrónico</label>
                     <input name="email" type="email" class="form-control" id="emailRegister" placeholder="Ingrese su correo electrónico">
                 
-                    <label for="passInput" class="form-label">Password</label>
+                    <label for="passInput" class="form-label mt-3">Password</label>
                     <input name="pass" type="password" class="form-control" id="passRegister" placeholder="Ingrese su contraseña">
 
                     <?php
@@ -71,7 +71,7 @@ $_SESSION['captcha'] = $resu;
                     //echo $objeBD->crearLista("select * from catatendencia order by Nombre;", "Tendencia", "idTendencia", "Nombre");
                     ?>
 
-                    <label for="captchaInput" class="form-label">Captcha</label>
+                    <label for="captchaInput" class="form-label mt-3">Captcha</label>
                     <input name="captcha" type="text" class="form-control" placeholder="<?= $captcha; ?>" required>
 
                     <input type="submit" class="btn btn-primary mx-auto mt-3 w-25" value="Registrar">
