@@ -88,16 +88,54 @@ $_SESSION = array();
     </main>
     <!-- /Main -->
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <section id="fancy" class="mt-5 mb-4">
+        <div class="container-fluid">
+            <div class="row m-5">
+                <div class="col text-center text-uppercase">
+                    <h2>Conócenos</h2>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-3 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="img/card_1.webp" class="card-img-top" alt="a">
+                            <div class="card-body">
+                                <h5 class="card-title">Reparaciones Rápidas y Precisa</h5>
+                                <p class="card-text">Devuelve la potencia a tu automóvil en tiempo récord.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="img/card_2.webp" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title tex-/center">Experiencia en Mantenimiento</h5>
+                                <p class="card-text">Confía en nuestros expertos para cuidar de tu vehículo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="img/card_3.webp" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title tex-/center">Diagnóstico Profesional de Fallas</h5>
+                                <p class="card-text">Encuentra y soluciona los problemas de tu vehículo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="img/card_4.webp" class="card-img-top" alt="a">
+                            <div class="card-body">
+                                <h5 class="card-title">Renueva el Rendimiento de tu Automóvil</h5>
+                                <p class="card-text">Recupera la potencia y eficiencia de tu motor.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
 
     <?php
     // include 'menu/menu_index.php';
