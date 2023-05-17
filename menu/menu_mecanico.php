@@ -3,9 +3,10 @@
 
 // if (!isset($_SESSION['nombre']))
 //     header("location: ../index.php?e=45");
-// ?>
+// 
+?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,7 +16,7 @@
 
 </head>
 
-<body>
+<body> -->
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
@@ -25,20 +26,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Mis Citas</a>
-                </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Reportes</a>
+                        <a class="nav-link" aria-current="page" href="../mecanico/citas.php">Citas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mi Perfil</a>
+                        <a class="nav-link" aria-current="page" href="../mecanico/reportes.php">Reportes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../mecanico/home_mecanico.php">Mi Perfil</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- /Header -->
-</body>
+<!-- </body>
 
-</html>
+</html> -->

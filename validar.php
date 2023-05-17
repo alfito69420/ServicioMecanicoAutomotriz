@@ -31,6 +31,8 @@ if (isset($_GET['email']) && isset($_GET['password'])) {
         if ($objeBD->bloqueRegistros) {
             $_SESSION['nombre'] = $registro->nombre . " " . $registro->primer_ap . " " . $registro->segundo_ap;
             $_SESSION['correo'] = $registro->correo;
+            //$_SESSION['pass'] = $registro->contrasena;
+            $_SESSION['rol'] = $registro->rol_fk;
             $_SESSION['id'] = $registro->id_usuario;
 
             if ($registro->rol_fk == 2) {
@@ -39,7 +41,7 @@ if (isset($_GET['email']) && isset($_GET['password'])) {
                 //$objeBD->consulta("update usuario set fechaUltAcceso='".date("Y-m-d H:i:s")."', numeAccesos=numeAccesos+1 where id=".$registro->id);
                 header("location: regular_user/home_users.php");
             } else if($registro->rol_fk == 7) {
-                header("location: regular_user/home_users.php");
+                header("location: mecanico/home_mecanico.php");
             }
         } else {
             header("location: login.php?e=3");
