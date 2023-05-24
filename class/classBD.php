@@ -30,7 +30,8 @@ class datosBase
         // if ($this->bloqueRegistros) {
         //     printf("Error: %s\n", mysqli_error($p_sql));
         // }
-
+        if (strpos(strtoupper($p_sql), "INSERT") !== false);
+        else
         if (strpos(strtoupper($p_sql), "SELECT") !== false) {
             $this->numeRegistros = mysqli_num_rows($this->bloqueRegistros);
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//var_dump($_POST);
 include "classBD.php";
 
 $cita = "INSERT INTO cita SET fecha_cita='" . $_POST['fecha'] . "', reporte='" . $_POST['causa'] . "'";
@@ -14,10 +14,11 @@ $vehiculoMamalon = "INSERT INTO vehiculo(placa,ano_automovil,marca_cat_fk,modelo
 VALUES ('" . $_POST['placa'] . "','" . $_POST['anio'] . "',(select id_marca_cat from marca_cat order by id_marca_cat desc limit 1),
 (SELECT id_modelo_cat from modelo_cat order by id_modelo_cat desc limit 1)," . $_SESSION['id'] . ",
 (SELECT id_cita from cita order by id_cita desc limit 1))";
-
-//echo $cita;
-//echo $modelo
-//echo $vehiculo;
+/*
+echo "<br>".$cita."<br>";
+echo $marca."<br>";
+echo $modelo."<br>";
+echo $vehiculoMamalon."<br>";*/
 
 debug_to_console($cita);
 debug_to_console($modelo);
