@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2023 a las 09:32:02
+-- Tiempo de generación: 04-05-2023 a las 09:53:05
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.0.25
 
@@ -43,36 +43,10 @@ CREATE TABLE `cita` (
   `id_cita` int(11) NOT NULL,
   `fecha_cita` date NOT NULL,
   `reporte` varchar(200) NOT NULL,
-  `fecha_entrega` date DEFAULT NULL,
-  `refaccion_cat_fk` int(11) DEFAULT NULL,
-  `estatus_cat_fk` int(11) DEFAULT 1
+  `fecha_entrega` date NOT NULL,
+  `refaccion_cat_fk` int(11) NOT NULL,
+  `estatus_cat_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
-
---
--- Volcado de datos para la tabla `cita`
---
-
-INSERT INTO `cita` (`id_cita`, `fecha_cita`, `reporte`, `fecha_entrega`, `refaccion_cat_fk`, `estatus_cat_fk`) VALUES
-(14, '0000-00-00', '', NULL, NULL, NULL),
-(15, '2023-05-05', 'MORI', NULL, NULL, 1),
-(16, '0000-00-00', '', NULL, NULL, NULL),
-(17, '0000-00-00', '', NULL, NULL, NULL),
-(18, '0000-00-00', '', NULL, NULL, NULL),
-(19, '2023-06-07', 'ta descomponido', '2023-06-12', NULL, 4),
-(20, '2023-03-03', 'No se bro espero haberte ayudado', '0000-00-00', NULL, 3),
-(21, '2023-06-06', 'mainz arreglo este pedo', NULL, NULL, 1),
-(22, '2023-06-06', 'mainz arreglo este pedo', NULL, NULL, 1),
-(23, '2023-06-06', 'mainz arreglo este pedo', NULL, NULL, 1),
-(24, '2023-06-06', 'mainz arreglo este pedo', NULL, NULL, 1),
-(25, '2023-06-06', 'mainz again', NULL, NULL, 1),
-(26, '2023-06-06', 'mainz again', NULL, NULL, 1),
-(27, '2023-06-06', 'mainz again', NULL, NULL, 1),
-(28, '2023-01-01', 'aaaaaaaaaaaaaaaaaaaaaaa', NULL, NULL, 1),
-(29, '2023-01-01', 'aaaaaaaaaaaaaaaaaaaaaaa', NULL, NULL, 1),
-(30, '2023-01-01', 'aaaaaaaaaaaaaaaaaaaaaaa', NULL, NULL, 1),
-(31, '2023-01-01', 'aaaaaaaaaaaaaaaaaaaaaaa', NULL, NULL, 1),
-(32, '2023-01-01', 'aaaaaaaaaaaaaaaaaaaaaaa', NULL, NULL, 1),
-(33, '2023-01-01', 'aaaaaaaaaaaaaaaaaaaaaaa', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -84,8 +58,7 @@ CREATE TABLE `datos_fiscales` (
   `id_datos_fiscales` int(11) NOT NULL,
   `domicilio` varchar(200) NOT NULL,
   `rfc` varchar(13) NOT NULL,
-  `razon_social` varchar(200) NOT NULL,
-  `usuario_cat_fk` int(11) NOT NULL
+  `razon_social` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 -- --------------------------------------------------------
@@ -98,16 +71,6 @@ CREATE TABLE `estatus_cat` (
   `id_estatus_cat` int(11) NOT NULL,
   `estatus` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
-
---
--- Volcado de datos para la tabla `estatus_cat`
---
-
-INSERT INTO `estatus_cat` (`id_estatus_cat`, `estatus`) VALUES
-(1, 'En espera de verific'),
-(2, 'Cancelado'),
-(3, 'En reparación'),
-(4, 'Listo para entregar');
 
 -- --------------------------------------------------------
 
@@ -166,38 +129,7 @@ INSERT INTO `marca_cat` (`id_marca_cat`, `marca`) VALUES
 (17, 'Jeep'),
 (18, 'Ferrari'),
 (19, 'Lamborghini'),
-(20, 'Porsche'),
-(21, 'ford'),
-(22, 'PRUEBA MARCA'),
-(23, 'PRUEBA 2'),
-(24, ''),
-(25, 'PRUEBAAA'),
-(26, ''),
-(27, ''),
-(28, 'AAAAAA'),
-(29, ''),
-(30, ''),
-(31, ''),
-(32, 'AAAAAAAAAAAAAA'),
-(33, ''),
-(34, ''),
-(35, 'MORI'),
-(36, ''),
-(37, ''),
-(38, ''),
-(39, 'Mazda'),
-(40, 'WARANGO'),
-(41, 'equisdemovil'),
-(42, 'mainz'),
-(43, 'mainz'),
-(44, 'mainz'),
-(45, 'mainz'),
-(46, 'mainz 2'),
-(47, 'mainz 2'),
-(48, 'aaaaaaaaaaaaaaaaaaaaaaa'),
-(49, 'aaaaaaaaaaaaaaaaaaaaaaa'),
-(50, 'aaaaaaaaaaaaaaaaaaaaaaa'),
-(51, 'aaaaaaaaaaaaaaaaaaaaaaa');
+(20, 'Porsche');
 
 -- --------------------------------------------------------
 
@@ -229,7 +161,7 @@ INSERT INTO `marca_herramienta` (`id_marca`, `marca`) VALUES
 --
 
 CREATE TABLE `modelo_cat` (
-  `id_modelo_cat` int(11) NOT NULL,
+  `id_modelo-cat` int(11) NOT NULL,
   `modelo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
@@ -237,7 +169,7 @@ CREATE TABLE `modelo_cat` (
 -- Volcado de datos para la tabla `modelo_cat`
 --
 
-INSERT INTO `modelo_cat` (`id_modelo_cat`, `modelo`) VALUES
+INSERT INTO `modelo_cat` (`id_modelo-cat`, `modelo`) VALUES
 (1, 'Corolla'),
 (2, 'Camry'),
 (3, 'Prius'),
@@ -309,37 +241,7 @@ INSERT INTO `modelo_cat` (`id_modelo_cat`, `modelo`) VALUES
 (69, ' MX-5 Miata'),
 (70, 'CX-30'),
 (71, 'Mazda3'),
-(72, 'Mazda6'),
-(73, 'mustang'),
-(74, 'MODELO PRUEBA'),
-(75, 'PRUEBA 2'),
-(76, ''),
-(77, 'PRUEBAAA'),
-(78, ''),
-(79, ''),
-(80, 'AAAAAA'),
-(81, ''),
-(82, ''),
-(83, ''),
-(84, 'AAAAAAAAAAAAAA'),
-(85, ''),
-(86, ''),
-(87, 'MORI'),
-(88, ''),
-(89, ''),
-(90, ''),
-(91, 'CX'),
-(92, 'MAMALON'),
-(93, 'movil'),
-(94, 'movil'),
-(95, 'movil'),
-(96, 'movil'),
-(97, 'movil 2'),
-(98, 'movil 2'),
-(99, 'aaaaaaaaaaaaaaaaaaaaaaa'),
-(100, 'aaaaaaaaaaaaaaaaaaaaaaa'),
-(101, 'aaaaaaaaaaaaaaaaaaaaaaa'),
-(102, 'aaaaaaaaaaaaaaaaaaaaaaa');
+(72, 'Mazda6');
 
 -- --------------------------------------------------------
 
@@ -469,6 +371,7 @@ CREATE TABLE `usuario_cat` (
   `correo` varchar(200) NOT NULL,
   `contrasena` varchar(200) NOT NULL,
   `rol_fk` int(11) NOT NULL DEFAULT 1,
+  `datos_fis_fk` int(11) DEFAULT NULL,
   `herramienta_fk` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
@@ -476,13 +379,11 @@ CREATE TABLE `usuario_cat` (
 -- Volcado de datos para la tabla `usuario_cat`
 --
 
-INSERT INTO `usuario_cat` (`id_usuario`, `nombre`, `primer_ap`, `segundo_ap`, `correo`, `contrasena`, `rol_fk`, `herramienta_fk`) VALUES
-(2, 'Super', 'Admin', 'God', 'admin@god.com', '202cb962ac59075b964b07152d234b70', 2, NULL),
-(6, 'Cliente', 'Test', 'Prueba', 'test_2@gmail.com', '202cb962ac59075b964b07152d234b70', 1, NULL),
-(16, 'Alfis', 'Alio', 'Ferret', 'alfis@gmail.com', '202cb962ac59075b964b07152d234b70', 7, NULL),
-(19, 'Juan', 'Chambiador', 'Laburador', 'chambalabura@gmail.com', 'd9b1d7db4cd6e70935368a1efb10e377', 7, NULL),
-(21, 'Cliente', 'Test 2', 'Prueba 2', 'test_xd@gmail.com', '202cb962ac59075b964b07152d234b70', 1, NULL),
-(22, 'cliente ', 'prueba', 'ola', 'abcd@gmail.com', '202cb962ac59075b964b07152d234b70', 1, NULL);
+INSERT INTO `usuario_cat` (`id_usuario`, `nombre`, `primer_ap`, `segundo_ap`, `correo`, `contrasena`, `rol_fk`, `datos_fis_fk`, `herramienta_fk`) VALUES
+(2, 'SuperAdmin', 'Ultra', 'God', 'admin@god.com', '17c4520f6cfd1ab53d8745e84681eb49', 2, NULL, NULL),
+(5, 'Normi', 'Regular', 'Equis', 'normi@regular.com', '123', 1, NULL, NULL),
+(6, 'Normi 2', 'Regu', 'Equisde', 'equisde@xd.com', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 1, NULL, NULL),
+(9, 'Juan', 'Chambiador', 'Perez', 'chambiador2662@gmail.com', '202cb962ac59075b964b07152d234b70', 7, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -494,30 +395,11 @@ CREATE TABLE `vehiculo` (
   `id_vehiculo` int(11) NOT NULL,
   `placa` varchar(20) NOT NULL,
   `ano_automovil` int(11) NOT NULL,
-  `marca_cat_fk` int(11) DEFAULT NULL,
-  `modelo_cat_fk` int(11) DEFAULT NULL,
-  `usuario_cat` int(11) DEFAULT NULL,
-  `cita_fk` int(11) DEFAULT NULL
+  `marca_cat_fk` int(11) NOT NULL,
+  `modelo_cat_fk` int(11) NOT NULL,
+  `usuario_cat` int(11) NOT NULL,
+  `cita_fk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
-
---
--- Volcado de datos para la tabla `vehiculo`
---
-
-INSERT INTO `vehiculo` (`id_vehiculo`, `placa`, `ano_automovil`, `marca_cat_fk`, `modelo_cat_fk`, `usuario_cat`, `cita_fk`) VALUES
-(15, 'MORI', 2001, NULL, NULL, NULL, NULL),
-(19, 'placaprueba', 2020, NULL, NULL, NULL, NULL),
-(20, '45-GH-520', 1963, NULL, NULL, NULL, NULL),
-(21, 'abcd', 1968, 12, 67, 22, 19),
-(22, 'equisde', 1973, NULL, NULL, NULL, NULL),
-(27, 'prueba', 1900, 41, NULL, NULL, NULL),
-(28, 'prueba', 1900, 41, 92, 22, 20),
-(29, 'mainz 2', 2023, 46, 97, 21, 25),
-(30, 'mainz 2', 2023, 47, 98, 21, 26),
-(31, 'aaaaaaaaaaaaaaaaaaaa', 1695, 48, 99, 21, 29),
-(32, 'aaaaaaaaaaaaaaaaaaaa', 1695, 49, 100, 21, 30),
-(33, 'aaaaaaaaaaaaaaaaaaaa', 1695, 50, 101, 21, 31),
-(34, 'aaaaaaaaaaaaaaaaaaaa', 1695, 51, 102, 21, 33);
 
 -- --------------------------------------------------------
 
@@ -553,8 +435,7 @@ ALTER TABLE `cita`
 -- Indices de la tabla `datos_fiscales`
 --
 ALTER TABLE `datos_fiscales`
-  ADD PRIMARY KEY (`id_datos_fiscales`),
-  ADD KEY `usuario_cat_fk` (`usuario_cat_fk`);
+  ADD PRIMARY KEY (`id_datos_fiscales`);
 
 --
 -- Indices de la tabla `estatus_cat`
@@ -591,7 +472,7 @@ ALTER TABLE `marca_herramienta`
 -- Indices de la tabla `modelo_cat`
 --
 ALTER TABLE `modelo_cat`
-  ADD PRIMARY KEY (`id_modelo_cat`);
+  ADD PRIMARY KEY (`id_modelo-cat`);
 
 --
 -- Indices de la tabla `proveedor_herramienta`
@@ -647,6 +528,7 @@ ALTER TABLE `tipo_persona_cat`
 ALTER TABLE `usuario_cat`
   ADD PRIMARY KEY (`id_usuario`),
   ADD KEY `usuario_cat_ibfk_1` (`rol_fk`),
+  ADD KEY `datos_fis_fk` (`datos_fis_fk`),
   ADD KEY `herramienta_fk` (`herramienta_fk`);
 
 --
@@ -680,7 +562,7 @@ ALTER TABLE `cfdi_cat`
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `datos_fiscales`
@@ -692,7 +574,7 @@ ALTER TABLE `datos_fiscales`
 -- AUTO_INCREMENT de la tabla `estatus_cat`
 --
 ALTER TABLE `estatus_cat`
-  MODIFY `id_estatus_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_estatus_cat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `herramienta`
@@ -710,7 +592,7 @@ ALTER TABLE `herramientas_cat`
 -- AUTO_INCREMENT de la tabla `marca_cat`
 --
 ALTER TABLE `marca_cat`
-  MODIFY `id_marca_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_marca_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `marca_herramienta`
@@ -722,7 +604,7 @@ ALTER TABLE `marca_herramienta`
 -- AUTO_INCREMENT de la tabla `modelo_cat`
 --
 ALTER TABLE `modelo_cat`
-  MODIFY `id_modelo_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id_modelo-cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor_herramienta`
@@ -770,13 +652,13 @@ ALTER TABLE `tipo_persona_cat`
 -- AUTO_INCREMENT de la tabla `usuario_cat`
 --
 ALTER TABLE `usuario_cat`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_vehiculo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -794,12 +676,6 @@ ALTER TABLE `cfdi_cat`
 ALTER TABLE `cita`
   ADD CONSTRAINT `cita_ibfk_1` FOREIGN KEY (`estatus_cat_fk`) REFERENCES `estatus_cat` (`id_estatus_cat`) ON UPDATE CASCADE,
   ADD CONSTRAINT `cita_ibfk_2` FOREIGN KEY (`refaccion_cat_fk`) REFERENCES `refaccion_cat` (`id_refaccuib_cat`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `datos_fiscales`
---
-ALTER TABLE `datos_fiscales`
-  ADD CONSTRAINT `datos_fiscales_ibfk_1` FOREIGN KEY (`usuario_cat_fk`) REFERENCES `usuario_cat` (`id_usuario`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `herramientas_cat`
@@ -838,6 +714,7 @@ ALTER TABLE `tipo_persona_cat`
 --
 ALTER TABLE `usuario_cat`
   ADD CONSTRAINT `usuario_cat_ibfk_1` FOREIGN KEY (`rol_fk`) REFERENCES `rol_cat` (`id_rol_cat`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_cat_ibfk_2` FOREIGN KEY (`datos_fis_fk`) REFERENCES `datos_fiscales` (`id_datos_fiscales`),
   ADD CONSTRAINT `usuario_cat_ibfk_3` FOREIGN KEY (`herramienta_fk`) REFERENCES `herramienta` (`id_herramienta`);
 
 --
@@ -845,7 +722,7 @@ ALTER TABLE `usuario_cat`
 --
 ALTER TABLE `vehiculo`
   ADD CONSTRAINT `vehiculo_ibfk_1` FOREIGN KEY (`marca_cat_fk`) REFERENCES `marca_cat` (`id_marca_cat`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `vehiculo_ibfk_2` FOREIGN KEY (`modelo_cat_fk`) REFERENCES `modelo_cat` (`id_modelo_cat`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `vehiculo_ibfk_2` FOREIGN KEY (`modelo_cat_fk`) REFERENCES `modelo_cat` (`id_modelo-cat`) ON UPDATE CASCADE,
   ADD CONSTRAINT `vehiculo_ibfk_3` FOREIGN KEY (`usuario_cat`) REFERENCES `usuario_cat` (`id_usuario`) ON UPDATE CASCADE,
   ADD CONSTRAINT `vehiculo_ibfk_4` FOREIGN KEY (`cita_fk`) REFERENCES `cita` (`id_cita`) ON UPDATE CASCADE;
 
