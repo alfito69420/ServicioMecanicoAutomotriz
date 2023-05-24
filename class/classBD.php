@@ -26,6 +26,11 @@ class datosBase
     {  //  solo para select, si meto insert da error
         $this->conecta();
         $this->bloqueRegistros = mysqli_query($this->conexion, $p_sql);
+
+        // if ($this->bloqueRegistros) {
+        //     printf("Error: %s\n", mysqli_error($p_sql));
+        // }
+
         if (strpos(strtoupper($p_sql), "SELECT") !== false) {
             $this->numeRegistros = mysqli_num_rows($this->bloqueRegistros);
 

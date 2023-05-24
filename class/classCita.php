@@ -1,4 +1,5 @@
 <?php
+session_start();
 //include "../class/classBD.php";
 include "classBD.php";
 
@@ -7,6 +8,7 @@ class Cita extends datosBase
     function lista()
     {
         $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita FROM cita JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat");
+        
 
         // $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita 
         // FROM cita JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat WHERE id_usuario=".$_SESSION['id']);

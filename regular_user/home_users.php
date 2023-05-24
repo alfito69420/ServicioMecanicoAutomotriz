@@ -53,19 +53,17 @@ session_start();
                                     ?>
                                 </h6>
                             </div>
-                            <h4 class="mt-3">AAAAAAAAAAAAA</h4>
-                            <!-- <hr class="badge-secondary w-50"> -->
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p class="font-weight-bold">TEXTO</p>
-                                    <h6 class="text-muted">TEXTOel email de este cabron</h6>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="font-weight-bold">TEXTO</p>
-                                    <h6 class="text-muted">TEXTO</h6>
-                                </div>
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">Rol:</p>
+                                <h6 class="text-muted">
+                                    <?php
+                                    //echo $_SESSION['rol'];
+                                    if ($_SESSION['rol'] == 1) {
+                                        echo "Cliente";
+                                    }
+                                    ?>
+                                </h6>
                             </div>
-
                         </div>
                     </div>
                     <a class="btn btn-danger col-md-12 mt-3 mb-5" href="../index.php" role="button">Cerrar Sesión</a>
