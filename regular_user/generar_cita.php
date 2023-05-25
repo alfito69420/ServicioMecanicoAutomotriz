@@ -33,7 +33,7 @@
                     <label for="anioInput" class="form-label mt-3">Año</label>
                     <input name="anio" type="number" class="form-control" id="anio" placeholder="Ingrese el año del automovil">
 
-                    <label for="fechaInput" class="form-label mt-3">Fecha Cita</label>
+                    <label for="fechaInput" class="form-label mt-3">Fecha Cita (aa/mm/dd)</label>
                     <input name="fecha" type="text" class="form-control" id="fecha" placeholder="Ingrese la fecha para agendar la cita">
                 
                     <label for="causaInput" class="form-label mt-3">Causa de averío</label>

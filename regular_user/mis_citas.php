@@ -24,7 +24,15 @@
     <div class="container-fluid">
         <?php
         include '../class/classCitaCliente.php';
-        echo $objeCita->lista();
+        //echo $objeCitaCliente->lista();
+        if (isset($_POST['accion']) && isset($_POST['id'])) {
+            echo $objeCitaCliente->ejecuta($_POST['accion'], $_POST['id']);
+        } else {
+            if (isset($_POST['accion'])) {
+                echo $objeCitaCliente->ejecuta($_POST['accion']);
+            } else
+                echo $objeCitaCliente->lista();
+        }
         ?>
     </div>
     <div class="container-fluid">
