@@ -23,7 +23,7 @@
 
     <div class="container-fluid">
         <?php
-        include '../class/classCita.php';
+        include '../class/classCitaCliente.php';
         echo $objeCita->lista();
         ?>
     </div>

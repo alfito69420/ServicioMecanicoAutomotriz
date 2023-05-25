@@ -23,7 +23,7 @@
     </div>
     <div class="container">
         <?php
-        include "../class/classCita.php";
+        include "../class/classCitaAdmin.php";
         //echo $objeCita->lista();
 
         if (isset($_POST['accion']) && isset($_POST['id'])) {
