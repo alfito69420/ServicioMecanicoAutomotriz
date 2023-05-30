@@ -7,19 +7,20 @@ class Cita extends datosBase
 {
     function lista()
     {
-        $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita FROM cita JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat");
-        // $this->consulta("SELECT u.id_usuario as ID, c.id_cita as ID_CITA, c.fecha_cita as FECHA_CITA,
-        // c.fecha_entrega AS FECHA_ENTREGA, e.estatus as ESTATUS FROM vehiculo join marca_cat ma on id_marca_cat=marca_cat_fk 
-        // join modelo_cat mo on id_modelo_cat=modelo_cat_fk 
-        // join usuario_cat u on id_usuario=usuario_cat 
-        // join cita c on id_cita=cita_fk JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat WHERE usuario_cat =" . $_SESSION['id']);
+        // $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita, us.id_usuario FROM cita 
+        // JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat
+        // JOIN usuario_cat us ON id_usuario = ");
 
-        // $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita 
-        // FROM cita JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat WHERE id_usuario=".$_SESSION['id']);
+        $this->consulta("SELECT u.id_usuario as USUARIO, c.id_cita as ID_CITA, c.fecha_cita as FECHA_CITA,
+        c.fecha_entrega AS FECHA_ENTREGA, e.estatus as ESTATUS FROM vehiculo join marca_cat ma on id_marca_cat=marca_cat_fk 
+        join modelo_cat mo on id_modelo_cat=modelo_cat_fk 
+        join usuario_cat u on id_usuario=usuario_cat 
+        join cita c on id_cita=cita_fk JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat");
+
+        // $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita FROM cita 
+        // JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat");
 
         $html = '<table class="table table-hover table-striped table-secondary">';
-
-        //$html .= '<tr><td colspan="2"></td>';
 
         $html .= '<thead><tr class="table-dark">
                             <td colspan="2">
@@ -28,10 +29,6 @@ class Cita extends datosBase
                                 <input type="hidden" name="accion" value="formNew"/>
                                 </form> 
                             </td>';
-
-        // $html .= '<thead><tr class="table-dark">
-        //                     <td colspan="2">
-        //                     </td>';
 
         for ($col = 0; $col < $this->numeColumnas; $col++) { //cabeceras
             $html .= '<th>' . $this->nombColumnas[$col]->name . '</th>';
@@ -42,19 +39,17 @@ class Cita extends datosBase
             $html .= '<tr>';
             $datos = $this->getRecord();
             //$html .= '<td><img src="../img/user.webp" width="24px" /></td><td><img src="../img/garbage.webp" width="24px" /></td>';
-            $html .= '
-                    
-            <td>
+            $html .= '<td>
                         <form method="post" action="../admin/citas.php")">
                         <input type="image" src="../img/user.webp" width="24px" />
-                        <input type="hidden" name="id" value=' . $datos[0] . '  />
+                        <input type="hidden" name="id" value=' . $datos[1] . '  />
                         <input type="hidden" name="accion" value="estatus"/>
                         </form>
                     </td>
                     <td>
                         <form method="post" action="../admin/citas.php" onsubmit="return confirm(\'Estas seguro?\')">
                         <input type="image" src="../img/garbage.webp" width="24px" />
-                        <input type="hidden" name="id" value=' . $datos[0] . '  />
+                        <input type="hidden" name="id" value=' . $datos[1] . '  />
                         <input type="hidden" name="accion" value="borrar"/>
                         </form>
                     </td>';
@@ -66,7 +61,7 @@ class Cita extends datosBase
                     $html .= '<td>
                         <form method="post" action="../admin/citas.php">
                         <input type="image" src="../img/user.webp" width="24px" />
-                        <input type="hidden" name="id" value=' . $datos[0] . ' />
+                        <input type="hidden" name="id" value=' . $datos[1] . ' />
                         <input type="hidden" name="accion" value="aaaaa"/>
                         </form>
                     </td>';
@@ -119,12 +114,47 @@ class Cita extends datosBase
                 //             </form>
                 //         </div>';
 
+                // $html .= '<div class="container">
+                //                 <div class="row">
+
+                //                     <label class="col-4">Fecha de Cita (aa/mm/dd)</label>
+                //                         <div class="col-8">
+                //                             <input class="" type="text" name="fechaCita" value=' . (isset($registro) ? $registro->fecha_cita : '') . '>
+                //                         </div>
+
+                //                         <label class="col-4 mt-2">Fecha de Entrega (aa/mm/dd)</label>
+                //                         <div class="col-8 mt-2">
+                //                             <input class="" type="text" name="fechaEntrega" value=' . (isset($registro) ? $registro->fecha_entrega : '') . '>
+                //                         </div>
+
+                //                         <label class="col-4 mt-2">Estatus</label>
+                //                         <div class="col-8 mb-4 mt-2">
+                //                             <input class="" type="text" name="estatus" value=' . (isset($registro) ? $registro->estatus_cat_fk : '') . '>
+                //                         </div>
+
+                //                         <button type="submit" class="btn btn-success btn-sm">' . (isset($registro) ? 'Actualizar' : 'Registrar') . '
+                //                         </button>
+                //                         <input type="hidden" name="accion" value=' . (isset($registro) ? 'update' : 'insert') . '/>
+                                        
+                //                     </div>
+                //                 </div>
+                //             </form>
+                //         </div>';
                 $html .= '<div class="container">
                                 <div class="row">
+                                    <label class="col-4">Estatus</label>
+                                        <div class="col-8">
+                                            <input class="" type="text" name="estatus" value=' . (isset($registro) ? $registro->estatus_cat_fk : '') . '>
+                                        </div>
                                     <label class="col-4">Fecha de Cita (aa/mm/dd)</label>
                                         <div class="col-8">
                                             <input class="" type="text" name="fechaCita" value=' . (isset($registro) ? $registro->fecha_cita : '') . '>
                                         </div>
+                                    <label class="col-4">Fecha de entrega (aa/mm/dd)</label>
+                                        <div class="col-8">
+                                            <input class="" type="text" name="fechaEntrega" value=' . (isset($registro) ? $registro->fecha_entrega : '') . '>
+                                        </div>
+                                    </div>
                                     <div class="row mt-d mt-5">
                                         <button type="submit" class="btn btn-success btn-sm">' . (isset($registro) ? 'Actualizar' : 'Registrar') . '
                                         </button>
@@ -137,11 +167,23 @@ class Cita extends datosBase
                 break;
             case 'borrar':
                 $query = 'delete from cita where id_cita=' . $p_id;
+
+                $query = 'DELETE FROM cita WHERE id_cita=' . $p_id;
+                $query2 = 'DELETE FROM vehiculo WHERE id_vehiculo=' . $p_id;
+                $query3 = 'DELETE FROM modelo_cat WHERE id_marca_cat=' . $p_id;
+                $query4 = 'DELETE FROM marca_cat WHERE id_modelo_cat=' . $p_id;
+                $this->consulta($query2);
+                $this->consulta($query);
+                $this->consulta($query3);
+                $this->consulta($query4);
                 $this->consulta($query);
                 return $this->lista();
                 break;
             case 'insert';
                 //$query = "insert into cita(Nombre) values ('" . $_POST['nombre'] . "')";
+
+                // $query2 = "INSERT INTO cita SET fecha_cita='" . $_POST['fechaCita'] . "'
+                // , fecha_entrega='" . $_POST['fechaEntrega'] . "', estatus_cat_fk=" . $_POST['estatus'];
 
                 $query2 = "INSERT INTO cita SET fecha_cita='" . $_POST['fechaCita'] . "'
                 , fecha_entrega='" . $_POST['fechaEntrega'] . "', estatus_cat_fk=" . $_POST['estatus'];
@@ -152,12 +194,11 @@ class Cita extends datosBase
             case 'update':
                 //$query = 'UPDATE cita SET Nombre="' . $_POST['nombre'] . '" where id_cita=' . $_POST['Id'];
 
-                //$query2 = "UPDATE cita SET fecha_cita='" . $_POST['fechaCita'] . "'
-                //, fecha_entrega='" . $_POST['fechaEntrega'] . "'
-                //, estatus_cat_fk=" . $_POST['estatus']  . "WHERE id_usuario=" . $_POST['Id'];
+                $query2 = "UPDATE cita SET fecha_cita='" . $_POST['fechaCita'] . "'
+                , fecha_entrega='" . $_POST['fechaEntrega'] . "'
+                , estatus_cat_fk=" . $_POST['estatus']  . "WHERE id_cita=" . $_POST['Id'];
 
-
-                $query2 = "UPDATE cita SET fecha_cita='" . $_POST['fechaCita'] . "WHERE id_cita=" . $_POST['Id'];
+                //$query2 = "UPDATE cita SET fecha_cita='" . $_POST['fechaCita'] . "WHERE id_cita=" . $_POST['Id'];
                 $this->consulta($query2);
                 return $this->lista();
                 break;

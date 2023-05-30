@@ -24,7 +24,6 @@
     <div class="container">
         <?php
         include "../class/classCitaAdmin.php";
-        //echo $objeCita->lista();
 
         if (isset($_POST['accion']) && isset($_POST['id'])) {
             echo $objeCita->ejecuta($_POST['accion'], $_POST['id']);
