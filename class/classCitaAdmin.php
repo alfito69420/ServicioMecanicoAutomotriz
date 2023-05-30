@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 //include "../class/classBD.php";
 include "classBD.php";
 
@@ -22,12 +22,17 @@ class Cita extends datosBase
 
         $html = '<table class="table table-hover table-striped table-secondary">';
 
+        // $html .= '<thead><tr class="table-dark">
+        //                     <td colspan="2">
+        //                         <form method="post" action="citas.php">
+        //                         <input type="image" src ="../img/edit.webp" width="24px" />
+        //                         <input type="hidden" name="accion" value="formNew"/>
+        //                         </form> 
+        //                     </td>';
+
         $html .= '<thead><tr class="table-dark">
                             <td colspan="2">
-                                <form method="post" action="citas.php">
-                                <input type="image" src ="../img/edit.webp" width="24px" />
-                                <input type="hidden" name="accion" value="formNew"/>
-                                </form> 
+                                
                             </td>';
 
         for ($col = 0; $col < $this->numeColumnas; $col++) { //cabeceras
@@ -84,7 +89,7 @@ class Cita extends datosBase
             case 'formNew':
 
                 $html .= '<div class="d-flex justify-content-center">
-                            <form method="post" class="col-4">';
+                            <form action="citas.php" method="post" class="col-4">';
                 if ($p_accion == 'formNew')
                     $html .= "<h3  class='text-center mb-5'>Nueva Cita</h3>";
                 else {
@@ -135,7 +140,7 @@ class Cita extends datosBase
                 //                         <button type="submit" class="btn btn-success btn-sm">' . (isset($registro) ? 'Actualizar' : 'Registrar') . '
                 //                         </button>
                 //                         <input type="hidden" name="accion" value=' . (isset($registro) ? 'update' : 'insert') . '/>
-                                        
+
                 //                     </div>
                 //                 </div>
                 //             </form>
@@ -166,7 +171,7 @@ class Cita extends datosBase
                         </div>';
                 break;
             case 'borrar':
-                $query = 'delete from cita where id_cita=' . $p_id;
+                //$query = 'delete from cita where id_cita=' . $p_id;
 
                 $query = 'DELETE FROM cita WHERE id_cita=' . $p_id;
                 $query2 = 'DELETE FROM vehiculo WHERE id_vehiculo=' . $p_id;
@@ -185,20 +190,20 @@ class Cita extends datosBase
                 // $query2 = "INSERT INTO cita SET fecha_cita='" . $_POST['fechaCita'] . "'
                 // , fecha_entrega='" . $_POST['fechaEntrega'] . "', estatus_cat_fk=" . $_POST['estatus'];
 
-                $query2 = "INSERT INTO cita SET fecha_cita='" . $_POST['fechaCita'] . "'
-                , fecha_entrega='" . $_POST['fechaEntrega'] . "', estatus_cat_fk=" . $_POST['estatus'];
+                // $query2 = "INSERT INTO cita SET fecha_cita='" . $_POST['fechaCita'] . "'
+                // , fecha_entrega='" . $_POST['fechaEntrega'] . "', estatus_cat_fk=" . $_POST['estatus'];
+
+                $query2 = "INSERT INTO cita SET fecha_entrega='" . $_POST['fechaEntrega'] . "WHERE id_cita=" . $_POST['id'];
 
                 $this->consulta($query2);
                 return $this->lista();
                 break;
             case 'update':
-                //$query = 'UPDATE cita SET Nombre="' . $_POST['nombre'] . '" where id_cita=' . $_POST['Id'];
 
                 $query2 = "UPDATE cita SET fecha_cita='" . $_POST['fechaCita'] . "'
                 , fecha_entrega='" . $_POST['fechaEntrega'] . "'
-                , estatus_cat_fk=" . $_POST['estatus']  . "WHERE id_cita=" . $_POST['Id'];
+                , estatus_cat_fk=" . $_POST['estatus']  . " WHERE id_cita=" . $_POST['Id'];
 
-                //$query2 = "UPDATE cita SET fecha_cita='" . $_POST['fechaCita'] . "WHERE id_cita=" . $_POST['Id'];
                 $this->consulta($query2);
                 return $this->lista();
                 break;
