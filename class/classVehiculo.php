@@ -19,7 +19,7 @@ class Vehiculo extends datosBase
         //$html .= '<tr><td colspan="2"><img src="../img/edit.webp" width="24px" /></td>';
 
         $html .= '<thead><tr class="table-dark">
-                            <td colspan="2">
+                            <td colspan="1">
                                 <form method="post" action="mecanicos.php">
                                 <input type="image" src ="../img/edit.webp" width="24px" />
                                 <input type="hidden" name="accion" value="formNew"/>
@@ -42,15 +42,6 @@ class Vehiculo extends datosBase
                         <input type="hidden" name="id" value=' . $datos[0] . ' />
                         <input type="hidden" name="accion" value="formEdit"/>
                         </form>
-                    </td>
-                    
-                    <td>
-                        <form method="post" action="../admin/mecanicos.php" onsubmit="return confirm(\'Estas seguro?\')">
-                        <input type="image" src="../img/garbage.webp" width="24px" 
-                        />
-                        <input type="hidden" name="id" value=' . $datos[0] . '  />
-                        <input type="hidden" name="accion" value="borrar"/>
-                        </form>
                     </td>';
 
             for ($col = 0; $col < $this->numeColumnas; $col++) {
@@ -61,6 +52,8 @@ class Vehiculo extends datosBase
         $html .= '</table>';
         return $html;
     } //close function
+
+    
 }//close class
 
 $objeVehiculo = new Vehiculo();

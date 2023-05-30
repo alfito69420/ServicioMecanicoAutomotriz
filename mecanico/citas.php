@@ -16,8 +16,22 @@
     include '../menu/menu_mecanico.php';
     ?>
 
-    <div class="container-fluid">
-        <h1 class="text-center mt-5">Citas</h1>
+    <div class="text-center pt-4">
+        <h3>Citas</h3>
+    </div>
+    <div class="container">
+        <?php
+        include "../class/classCitaMecanico.php";
+
+        if (isset($_POST['accion']) && isset($_POST['id'])) {
+            echo $objeCita->ejecuta($_POST['accion'], $_POST['id']);
+        } else {
+            if (isset($_POST['accion'])) {
+                echo $objeCita->ejecuta($_POST['accion']);
+            } else
+                echo $objeCita->lista();
+        }
+        ?>
     </div>
 
     <?php

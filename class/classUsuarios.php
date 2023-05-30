@@ -66,7 +66,6 @@ class Usuarios extends datosBase
                 $registro = $this->getTupla("SELECT * FROM usuario_cat WHERE id_usuario=" . $p_id);
             case 'formNew':
 
-
                 $html .= '<div class="d-flex justify-content-center">
                             <form method="post" class="col-4">';
                 if ($p_accion == 'formNew')
