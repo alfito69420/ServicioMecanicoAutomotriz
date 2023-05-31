@@ -138,13 +138,14 @@ class CitaCliente extends datosBase
                 break;
             case 'borrar':
                 $query = 'DELETE FROM cita WHERE id_cita=' . $p_id;
-                $query2 = 'DELETE FROM vehiculo WHERE id_vehiculo=' . $p_id;
-                $query3 = 'DELETE FROM modelo_cat WHERE id_marca_cat=' . $p_id;
-                $query4 = 'DELETE FROM marca_cat WHERE id_modelo_cat=' . $p_id;
+                $query2 = 'DELETE FROM vehiculo WHERE cita_fk=' . $p_id;
+                $query3 = 'DELETE FROM modelo_cat WHERE id_modelo_cat=' . $p_id;
+                $query4 = 'DELETE FROM marca_cat WHERE id_marca_cat=' . $p_id;
                 $this->consulta($query2);
-                $this->consulta($query);
                 $this->consulta($query3);
                 $this->consulta($query4);
+                $this->consulta($query);
+
                 return $this->lista();
                 break;
             case 'insert';
