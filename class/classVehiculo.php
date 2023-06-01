@@ -16,14 +16,9 @@ class Vehiculo extends datosBase
         //$this->consulta("SELECT ma.marca, mo.modelo, ano_automovil, u.id_usuario FROM vehiculo join marca_cat ma on id_marca_cat=marca_cat_fk join modelo_cat mo on id_modelo_cat=modelo_cat_fk join usuario_cat u on id_usuario=usuario_cat WHERE usuario_cat=".$_SESSION['id']);
         $html = '<table class="table table-hover table-striped table-secondary">';
 
-        //$html .= '<tr><td colspan="2"><img src="../img/edit.webp" width="24px" /></td>';
-
         $html .= '<thead><tr class="table-dark">
                             <td colspan="1">
-                                <form method="post" action="mecanicos.php">
-                                <input type="image" src ="../img/edit.webp" width="24px" />
-                                <input type="hidden" name="accion" value="formNew"/>
-                                </form>
+                                
                             </td>';
 
         for ($col = 0; $col < $this->numeColumnas; $col++) { //cabeceras
@@ -34,14 +29,9 @@ class Vehiculo extends datosBase
         for ($ren = 0; $ren < $this->numeRegistros; $ren++) {
             $html .= '<tr>';
             $datos = $this->getRecord();
-            //$html .= '<td><img src="../img/user.webp" width="24px" /></td><td><img src="../img/garbage.webp" width="24px" /></td>';
-
+            
             $html .= '<td>
-                        <form method="post" action="../admin/mecanicos.php">
-                        <input type="image" src="../img/user.webp" width="24px" />
-                        <input type="hidden" name="id" value=' . $datos[0] . ' />
-                        <input type="hidden" name="accion" value="formEdit"/>
-                        </form>
+                       
                     </td>';
 
             for ($col = 0; $col < $this->numeColumnas; $col++) {
