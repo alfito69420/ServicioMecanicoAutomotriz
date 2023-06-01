@@ -7,9 +7,6 @@ class Cita extends datosBase
 {
     function lista()
     {
-        // $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita, us.id_usuario FROM cita 
-        // JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat
-        // JOIN usuario_cat us ON id_usuario = ");
 
         $this->consulta("SELECT u.id_usuario as USUARIO, c.id_cita as ID_CITA, c.fecha_cita as FECHA_CITA,
         c.fecha_entrega AS FECHA_ENTREGA, e.estatus as ESTATUS FROM vehiculo join marca_cat ma on id_marca_cat=marca_cat_fk 
@@ -17,21 +14,10 @@ class Cita extends datosBase
         join usuario_cat u on id_usuario=usuario_cat 
         join cita c on id_cita=cita_fk JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat");
 
-        // $this->consulta("SELECT id_cita, e.estatus, fecha_entrega, fecha_cita FROM cita 
-        // JOIN estatus_cat e ON estatus_cat_fk=id_estatus_cat");
-
         $html = '<table class="table table-hover table-striped table-secondary">';
 
-        // $html .= '<thead><tr class="table-dark">
-        //                     <td colspan="2">
-        //                         <form method="post" action="citas.php">
-        //                         <input type="image" src ="../img/edit.webp" width="24px" />
-        //                         <input type="hidden" name="accion" value="formNew"/>
-        //                         </form> 
-        //                     </td>';
-
         $html .= '<thead><tr class="table-dark">
-                            <td colspan="2">
+                            <td colspan="1">
                                 
                             </td>';
 
@@ -43,19 +29,12 @@ class Cita extends datosBase
         for ($ren = 0; $ren < $this->numeRegistros; $ren++) {
             $html .= '<tr>';
             $datos = $this->getRecord();
-            //$html .= '<td><img src="../img/user.webp" width="24px" /></td><td><img src="../img/garbage.webp" width="24px" /></td>';
+            
             $html .= '<td>
                         <form method="post" action="../mecanico/citas.php")">
                         <input type="image" src="../img/user.webp" width="24px" />
                         <input type="hidden" name="id" value=' . $datos[1] . '  />
                         <input type="hidden" name="accion" value="estatus"/>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="../mecanico/citas.php" onsubmit="return confirm(\'Estas seguro?\')">
-                        <input type="image" src="../img/garbage.webp" width="24px" />
-                        <input type="hidden" name="id" value=' . $datos[1] . '  />
-                        <input type="hidden" name="accion" value="borrar"/>
                         </form>
                     </td>';
 
@@ -196,7 +175,7 @@ class Cita extends datosBase
                 break;
             case 'update':
 
-                $query2 = "UPDATE cita SET fecha_cita='" . $_POST['fechaCita'] . "'
+                $query2 = "UPDATE cita SET fecha_entrega='" . $_POST['fechaEntrega'] . "'
                 , fecha_entrega='" . $_POST['fechaEntrega'] . "'
                 , estatus_cat_fk=" . $_POST['estatus']  . " WHERE id_cita=" . $_POST['Id'];
 

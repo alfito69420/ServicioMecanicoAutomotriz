@@ -65,7 +65,7 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <a class="btn btn-danger col-md-12 mt-3" href="../index.php" role="button">Cerrar Sesión</a>
+                    <a class="btn btn-danger col-md-12 mt-3 mb-5" href="../index.php" role="button">Cerrar Sesión</a>
                 </div>
 
             </div>

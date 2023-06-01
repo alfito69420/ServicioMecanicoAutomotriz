@@ -38,11 +38,19 @@ session_start();
                         <div class="row">
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Nombre:</p>
-                                <h6 class="text-muted">el email de este cabron</h6>
+                                <h6 class="text-muted">
+                                <?php
+                                    echo $_SESSION['nombre'];
+                                    ?>
+                                </h6>
                             </div>
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Correo:</p>
-                                <h6 class="text-muted">el email de este cabron</h6>
+                                <h6 class="text-muted">
+                                <?php
+                                    echo $_SESSION['correo'];
+                                    ?>
+                                </h6>
                             </div>
                             
                             <div class="col-sm-6">
@@ -58,7 +66,7 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <a class="btn btn-danger col-md-12 mt-3" href="../index.php" role="button">Cerrar Sesión</a>
+                    <a class="btn btn-danger col-md-12 mt-3 mb-5" href="../index.php" role="button">Cerrar Sesión</a>
                 </div>
 
             </div>

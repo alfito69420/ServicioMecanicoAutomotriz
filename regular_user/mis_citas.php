@@ -36,7 +36,7 @@
         ?>
     </div>
     <div class="container-fluid">
-        <a class="btn btn-primary" href="generar_cita.php" role="button">Generar Nueva Cita</a>
+        <a class="btn btn-primary mb-5" href="generar_cita.php" role="button">Generar Nueva Cita</a>
     </div>
 
     <?php
